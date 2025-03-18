@@ -1,24 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 
 namespace MyWebApp.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
+    [ApiController] // Important for API behaviors
+    [Route("[controller]")] // This will make the base route '/Home'
     public class HomeController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
-
-        public HomeController(IConfiguration configuration)
+        [HttpGet]
+        public IActionResult Get()
         {
-            _configuration = configuration;
-        }
-
-        [HttpGet("config")]
-        public IActionResult GetConfiguration()
-        {
-            var myCustomSetting = _configuration["MyCustomSetting"];
-            return Ok($"My Custom Setting: {myCustomSetting}");
+            return Ok("Hello from my Web API!");
         }
     }
 }

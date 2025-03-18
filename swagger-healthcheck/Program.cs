@@ -24,7 +24,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Healthcheck v1"));
 }
-
+else
+{
+    // In production, you might want to conditionally enable Swagger
+    // For this example, we'll assume you want it in all environments
+    app.UseSwagger();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Web API v1"));
+}
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
